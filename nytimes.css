@@ -1,0 +1,156 @@
+@font-face {
+   font-family: 'EnglishTowne';
+   src: url('EnglishTowne.ttf');
+   font-weight: normal;
+   font-style: normal;
+}
+
+body {
+	margin: 0;
+}
+
+#shell {
+	margin-right: auto;
+	margin-left: auto;
+	width: 970px;
+}
+
+.masthead {
+	border-bottom: 1px solid #e5e5e5;
+	text-align: center;
+}
+
+.masthead-cap {
+	position: relative;
+	width: 100%;
+	height:50px;
+	display:block;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.masthead-cap div {
+	margin-top: 12.5px;
+	height: 25px;
+
+}
+
+#quick-nav {
+	float:left;
+	margin-left: 0;
+}
+
+#quick-nav button {
+	border: none;
+	border-radius: 2px;
+	background-color: transparent;
+}
+
+button:hover {
+	transition: all 0.5s linear;
+}
+
+#quick-nav button:hover {
+	background-color: #e5e5e5;
+}
+
+#user-nav #settings {
+	border: none;
+	border-radius: 2px;
+	background-color: transparent;	
+}
+
+#user-nav #settings:hover{
+	background-color: #e5e5e5;	
+}
+
+#user-nav {
+	float:right;
+	margin-right: 0;
+}
+
+#meta {
+	font-family: 'EnglishTowne';
+	font-size: 50px;
+	clear:both;
+	display:block;
+	border-bottom: 2px solid;
+}
+
+#mini-nav {
+	height: 30px;
+	display: block;
+	padding-top: 5px;
+}
+
+#mini-nav ul li { 
+	display: inline-block;
+	margin: 1px 0;
+}
+
+#mini-nav a {
+	font-size: 85%;
+	border-radius: 2px;
+	padding-right: 3px;
+	padding-left: 3px;
+	color: black;
+}
+
+#mini-nav a:hover {
+	transition: all 0.5s linear;
+	text-decoration: none;
+	background-color: #e5e5e5;	
+}
+
+#main {
+	margin: 0;
+	margin-top: 10px;
+	width: 100%;
+}
+
+.col-narrow {
+	float: left;
+	width: 220px;
+	padding-right: 5px;
+}
+
+.col-mid {
+	float: left;
+	width: 375px;
+	padding-left: 10px;
+	border-left: 1px solid #e5e5e5;
+}
+
+/* DIFFERENT SIZES */
+@media only screen and (min-width: 768px) {
+	#mobile-banner {
+		display: none;
+	}
+}
+
+/* TABLET & SMALLER */
+@media only screen and (max-width: 767px) {
+	#shell {
+		width: 100%;
+	}
+
+	#mini-nav {
+		display: none;
+	}
+
+	.col-mid {
+		padding-left: 0;
+	}
+
+	.col-mobile {
+		padding-left:3%;
+		width: 97%;
+	}
+}
+
+/* MOBILE */
+@media only screen and (max-width: 480px) {
+	#meta {
+		font-size: 25px;
+		padding: 25px 0;
+	}
+}

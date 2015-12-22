@@ -10,8 +10,8 @@ body {
 }
 
 #shell {
-	margin-right: 155px;
-	margin-left: 155px;
+	margin: auto;
+	width: 970px;
 }
 
 .masthead {
@@ -141,7 +141,7 @@ button:hover {
 	margin: 0;
 	margin-top: 10px;
 	width: 100%;
-	overflow: scroll;
+	float: left;
 }
 
 .col-narrow {
@@ -192,7 +192,6 @@ button:hover {
 .sidebar a:hover {
 
 	text-decoration: none;
-	/*background-color: #e5e5e5;*/
 }
 
 #searchbar {

@@ -14,74 +14,66 @@ $(document).ready(function() {
 });
 
 function renderBanner() {
+
+	/*
+		Main components of the banner
+	*/
 	var masthead = document.createElement("div");
-	masthead.className = "masthead";
-	shell.appendChild(masthead);	
+	$(masthead).addClass("masthead").appendTo(shell);
 
 	var cap = document.createElement("div");
-	cap.className = "masthead-cap";
-
-	masthead.appendChild(cap);
+	$(cap).addClass("masthead-cap").appendTo(masthead);
 
 	var quicknav = document.createElement("div");
-	quicknav.id = "quick-nav"
+	$(quicknav).attr("id", "quick-nav").appendTo(cap);
 
 	var usernav = document.createElement("div");
-	usernav.id = "user-nav";
+	$(usernav).attr("id", "user-nav").appendTo(cap);
 
-	cap.appendChild(quicknav);
-	cap.appendChild(usernav);
 
-	// quicknav - sections and search
+	/* 
+		quicknav - sections and search buttons 
+	*/
+
+	// sections button
 	var sectionbtn = document.createElement("button");
-	sectionbtn.className = "sections";
 	var icon1 = document.createElement("i");
-	icon1.className = "glyphicon glyphicon-menu-hamburger";
-	sectionbtn.appendChild(icon1);
-	var sectiontxt = document.createTextNode(" Sections");
-	sectionbtn.appendChild(sectiontxt);
-	quicknav.appendChild(sectionbtn)
+	$(icon1).addClass("glyphicon glyphicon-menu-hamburger").appendTo(sectionbtn);
+	$(sectionbtn).addClass("sections").append(" Sections").appendTo(quicknav);
 
+	// search button
 	var searchbtn = document.createElement("button");
-	searchbtn.className = "search";
 	var icon2 = document.createElement("i");
-	icon2.className = "glyphicon glyphicon-search";
-	searchbtn.appendChild(icon2);
-	var searchtxt = document.createTextNode(" Search");
-	searchbtn.appendChild(searchtxt);
-	quicknav.appendChild(searchbtn);
+	$(icon2).addClass("glyphicon glyphicon-search").appendTo(searchbtn);
+	$(searchbtn).addClass("search").append(" Search").appendTo(quicknav);
 
-	// usernav - subscribe, login, settings
+
+	/* 
+		usernav - subscribe, login, settings
+	*/
+
+	// subscribe button
 	var subbtn = document.createElement("button");
-	subbtn.className = "btn btn-primary btn-sm";
-	subbtn.textContent = "Subscribe Now";
-	usernav.appendChild(subbtn);
+	$(subbtn).addClass("btn btn-primary btn-sm").text("Subscribe Now").appendTo(usernav);
 
+	// login button
 	var loginbtn = document.createElement("button");
-	loginbtn.className = "btn btn-primary btn-sm";
-	loginbtn.textContent = "Log In";
-	usernav.appendChild(loginbtn);
+	$(loginbtn).addClass("btn btn-primary btn-sm").text("Log In").appendTo(usernav);
 
+	// settings button
 	var setbtn = document.createElement("button");
-	setbtn.id = "settings";
-	var seticon = document.createElement("i");
-	seticon.className = "glyphicon glyphicon-cog";
-	setbtn.appendChild(seticon);
-	usernav.appendChild(setbtn);
+	$(setbtn).attr("id", "settings").append("<i class='glyphicon glyphicon-cog' />").appendTo(usernav);
+
 
 	// meta - for logo
 	var meta = document.createElement("div");
-	meta.id = "meta";
-	meta.textContent = "The New York Times";
-	masthead.appendChild(meta);
+	$(meta).attr("id", "meta").text("The New York Times").appendTo(masthead);
 
 	//navigation menu
 	var mininav = document.createElement("nav");
-	mininav.id = "mini-nav";
 	var navmenu = document.createElement("ul");
-	navmenu.id = "min-nav-menu";
-	masthead.appendChild(mininav);
-	mininav.appendChild(navmenu);
+	$(navmenu).attr("id", "min-nav-menu").appendTo(mininav);
+	$(mininav).attr("id", "mini-nav").appendTo(masthead);
 
 	var menuList = ["World", "U.S.", "Politics", "N.Y.", "Business", 
 					"Opinion", "Tech", "Science", "Health", "Sports",
@@ -91,24 +83,19 @@ function renderBanner() {
 	for (var i = 0; i < menuList.length; i++) {
 		var item = document.createElement("li");
 		var link = document.createElement("a");
-		link.href = "#";
 
-
-		link.appendChild(document.createTextNode(menuList[i]));
-		item.appendChild(link);
-		navmenu.appendChild(item);
+		$(link).attr("href", "#").append(menuList[i]).appendTo(item);
+		$(item).appendTo(navmenu);
 	}
 }
 
 function renderMain() {
 
 	var main = document.createElement("div");
-	main.id = "main";
-	shell.appendChild(main);
+	$(main).attr("id", "main").appendTo(shell);
 
 	var narrow = document.createElement("div");
-	narrow.className = "col-narrow col-mobile";
-	main.appendChild(narrow);
+	$(narrow).addClass("col-narrow col-mobile").appendTo(main);
 	
 	for (var j = 0; j < 15; j++) {
 		var par = document.createElement("p");
@@ -118,11 +105,9 @@ function renderMain() {
 
 	var mid1 = document.createElement("div");
 	var mid2 = document.createElement("div");
-	mid1.className = "col-mid col-mobile";
-	mid2.className = "col-mid col-mobile";
 
-	main.appendChild(mid1);
-	main.appendChild(mid2);
+	$(mid1).addClass("col-mid col-mobile").appendTo(main);
+	$(mid2).addClass("col-mid col-mobile").appendTo(main);
 
 	for (var j = 0; j < 25; j++) {
 		var par = document.createElement("p");
@@ -179,33 +164,30 @@ function renderAux() {
 	*/
 
 	var sidebar = document.createElement("nav");
-	sidebar.className = "sidebar";
-	document.body.appendChild(sidebar);
+	$(sidebar).addClass("sidebar").appendTo("body");
 	//sidebar.class = "expandable";
 
-	for (var i = 0; i < 2; i++)
+	var numSections = 2;
+
+	for (var i = 0; i < numSections; i++)
 	{
 		var sectionDiv = document.createElement("div");
 		sectionDiv.id = "section_" + i;
 		$(sectionDiv).css({'padding-left': '15px','padding-top': '10px',
 							'padding-right': '15px', 
-							'border-top': '1px solid #e5e5e5' });
+							'border-top': '1px solid #e5e5e5' }).appendTo(sidebar);
 
 		var sectionList = document.createElement("ul");
-		$(sectionList).css({'padding-left': 0});
-		sectionDiv.appendChild(sectionList);
-		sidebar.appendChild(sectionDiv);
+		$(sectionList).css({'padding-left': 0}).appendTo(sectionDiv);
 	}
 
 	var sectionsContent = [["Home Page", "World", "U.S.", "Politics", "N.Y.", 
 							"Business", "Opinion", "Tech", "Science", "Health", "Sports"],
 							["Arts", "Fashion & Style", "Food", "Travel", "Magazine", "T Magazine", 
 							"Real Estate", "Obituaries", "Video", "The Upshot", "Conferences"]];
-
-
 	var more = "More";
 
-	for (var i = 0; i < 2; i++)
+	for (var i = 0; i < numSections; i++)
 	{
 		var currSection = $("#section_" + i);
 			
@@ -221,30 +203,22 @@ function renderAux() {
 	*/
 
 	var searchbar = document.createElement("div");
-	searchbar.id = "searchbar";
-	$("#mini-nav").append(searchbar);
+	$(searchbar).attr("id", "searchbar").appendTo("#mini-nav");
 
 	var searchbox = document.createElement("input");
-	searchbox.type = "text";
-	searchbox.id = "searchbox";
-	searchbar.appendChild(searchbox);
+	$(searchbox).attr({type: "text", id: "searchbox"}).appendTo(searchbar);
 
 	var searchSubmit = document.createElement("button");
-	searchSubmit.type = "submit";
-	searchSubmit.textContent = "GO";
-	searchbar.appendChild(searchSubmit);	
+	$(searchSubmit).attr({type: "submit"}).text("GO").appendTo(searchbar);
 
 	searchToggle();
 
 }
 
 function sectionsSide() {
-	
-	var sidebar = $(".sidebar");
-	console.log("sectionsSide");
 
 	$(document).on('click', '.sections', function() {
-		$(sidebar).fadeToggle({duration: 250, queue: false});
+		$(".sidebar").fadeToggle({duration: 250, queue: false});
 	});
 
 	$(document).click(function(event) { 

@@ -1,7 +1,11 @@
-var shell = document.createElement("div");
-shell.id = "shell";
+var rshell = React.createElement('div', {id: 'shell'});
+React.render(rshell, document.body);
 
-document.body.appendChild(shell);
+var shell = $('#shell');
+
+var div = React.createFactory('div');
+var button = React.createFactory('button');
+var icon = React.createFactory('i');
 
 $(document).ready(function() {
 	renderBanner();
@@ -16,34 +20,35 @@ function renderBanner() {
 	/*
 		Main components of the banner
 	*/
-	var masthead = document.createElement("div");
-	$(masthead).addClass("masthead").appendTo(shell);
 
-	var cap = document.createElement("div");
-	$(cap).addClass("masthead-cap").appendTo(masthead);
+	var rquicknav = div( { id: 'quick-nav'});
+	var rusernav = div( { id: 'user-nav' });
 
-	var quicknav = document.createElement("div");
-	$(quicknav).attr("id", "quick-nav").appendTo(cap);
+	var rcap = div( { className: 'masthead-cap' }, {rquicknav, rusernav});
 
-	var usernav = document.createElement("div");
-	$(usernav).attr("id", "user-nav").appendTo(cap);
+	var rmasthead = div({ className: 'masthead' }, rcap);
 
+	React.render(rmasthead, document.getElementById('shell'));
+
+	var quicknav = $('#quick-nav');
+	var usernav = $('#user-nav');
+	var masthead = $('.masthead');
+	var cap = $('.cap');
 
 	/* 
 		quicknav - sections and search buttons 
 	*/
 
 	// sections button
-	var sectionbtn = document.createElement("button");
-	var icon1 = document.createElement("i");
-	$(icon1).addClass("glyphicon glyphicon-menu-hamburger").appendTo(sectionbtn);
-	$(sectionbtn).addClass("sections").append(" Sections").appendTo(quicknav);
+	var ricon1 = icon({ className: "glyphicon glyphicon-menu-hamburger" });
+	var rsectionbtn = button({ className: 'sections'}, {ricon1, textContent: " Sections"});
+	React.render(rsectionbtn, document.getElementById('quick-nav'));
+
 
 	// search button
-	var searchbtn = document.createElement("button");
-	var icon2 = document.createElement("i");
-	$(icon2).addClass("glyphicon glyphicon-search").appendTo(searchbtn);
-	$(searchbtn).addClass("search").append(" Search").appendTo(quicknav);
+	var ricon2 = icon({ className: "glyphicon glyphicon-search" });
+	var rsearchbtn = button({ className: 'search'}, {ricon2, textContent: " Search"});
+	React.render(rsearchbtn, document.getElementById('quick-nav'));
 
 
 	/* 
